@@ -1,0 +1,111 @@
+  @import "compass";
+  @import "compass/reset";
+
+  html, body {
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    background:#242424;
+  }
+
+  body {
+    font-family: "Helvetica Neue", "Helvetica", Arial;
+    div#map {width:100%; height:100%;}
+
+    aside {
+      position:fixed;
+      top:0;
+      bottom:0;
+      right: 43px;
+      width:200px;
+      height:100%;
+      background:#FFFFFF;
+      @include box-shadow(rgba(#DEDEDE,0.2) 0 0 0 5px);
+      z-index:1;
+
+      header {
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:285px;
+        background:url("../img/stripes.png") repeat 0 0 #FF3366;
+        border-bottom:1px solid #CCCCCC;
+
+        h1 {
+          position:absolute;
+          top:16px;
+          left:-14px;
+          width:229px;
+          height:251px;
+          background:url("../img/logo.png");
+          text-indent:-9999px;
+          line-height:0;
+          text-transform:uppercase;
+          font-size:0;
+        }
+      }
+
+      h3 {
+        display:block;
+        font:bold 11px "Helvetica Neue";
+        color:#FF3366;
+        text-transform:uppercase;
+      }
+
+      section.types {
+        position:absolute;
+        top:285px;
+        bottom:140px;
+        left:0;
+        width:160px;
+        padding:20px;
+      }
+
+      section.prices {
+        position:absolute;
+        bottom:0;
+        left:0;
+        width:160px;
+        height:100px;
+        padding:20px;
+        border-top:1px solid #CCCCCC;
+
+        ul {
+          display:block;
+
+          li {
+            display:block;
+            margin:5px 0 0 0;
+
+            span.circle {
+              @include inline-block();
+              vertical-align:middle;
+              height:7px;
+              width:7px;
+              margin:0 7px 0 0;
+              @include border-radius(5px);
+              &.yellow {background:#FAEC1F}
+              &.orange {background:#EAA226}
+              &.orange-dark {background:#DB592E}
+              &.red {background:#CB0F35}
+            }
+            span.cash {
+              @include inline-block();
+              vertical-align:middle;
+              height:14px;
+              background:url('../img/cash.png') repeat 0 0;
+              
+              @include border-radius(5px);
+              &.yellow {width:30px}
+              &.orange {width:45px}
+              &.orange-dark {width:60px}
+              &.red {width:75px}
+            }
+          }
+        }
+      }
+    }
+  }
