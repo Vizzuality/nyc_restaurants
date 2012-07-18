@@ -58,9 +58,9 @@ a.leaflet-active { outline: 2px solid orange; }
 
 .leaflet-right .leaflet-control { margin-right: 10px; }
 
-.leaflet-control-zoom, .leaflet-control-layers { -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; border-radius: 0; }
+.leaflet-control-zoom, .leaflet-control-layers { -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; }
 
-.leaflet-control-zoom { padding: 0; background: white; -webkit-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; -moz-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; }
+.leaflet-control-zoom { padding: 0; background: white; -moz-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; -webkit-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; -o-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; }
 
 .leaflet-control-zoom a { background-color: rgba(255, 255, 255, 0.75); }
 

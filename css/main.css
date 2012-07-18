@@ -19,7 +19,7 @@ html, body { width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden;
 
 body { font-family: "Helvetica Neue", "Helvetica", Arial; }
 body div#map { width: 100%; height: 100%; }
-body aside { position: fixed; top: 0; bottom: 0; right: 43px; width: 200px; height: 100%; background: #FFFFFF; -webkit-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; -moz-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; z-index: 1; }
+body aside { position: fixed; top: 0; bottom: 0; right: 43px; width: 200px; height: 100%; background: #FFFFFF; -moz-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; -webkit-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; -o-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; z-index: 1; }
 body aside header { position: absolute; top: 0; left: 0; width: 100%; height: 285px; background: url("../img/stripes.png") repeat 0 0 #ff3366; border-bottom: 1px solid #CCCCCC; }
 body aside header h1 { position: absolute; top: 16px; left: -14px; width: 229px; height: 251px; background: url("../img/logo.png"); text-indent: -9999px; line-height: 0; text-transform: uppercase; font-size: 0; }
 body aside h3 { display: block; font: bold 11px "Helvetica Neue"; color: #FF3366; text-transform: uppercase; }
@@ -27,13 +27,13 @@ body aside section.types { position: absolute; top: 285px; bottom: 140px; left: 
 body aside section.prices { position: absolute; bottom: 0; left: 0; width: 160px; height: 100px; padding: 20px; border-top: 1px solid #CCCCCC; }
 body aside section.prices ul { display: block; }
 body aside section.prices ul li { display: block; margin: 5px 0 0 0; }
-body aside section.prices ul li span.circle { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; vertical-align: middle; height: 7px; width: 7px; margin: 0 7px 0 0; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; }
+body aside section.prices ul li span.circle { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; vertical-align: middle; height: 7px; width: 7px; margin: 0 7px 0 0; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
 body aside section.prices ul li span.circle { *display: inline; }
 body aside section.prices ul li span.circle.yellow { background: #FAEC1F; }
 body aside section.prices ul li span.circle.orange { background: #EAA226; }
 body aside section.prices ul li span.circle.orange-dark { background: #DB592E; }
 body aside section.prices ul li span.circle.red { background: #CB0F35; }
-body aside section.prices ul li span.cash { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; vertical-align: middle; height: 14px; background: url("../img/cash.png") repeat 0 0; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; }
+body aside section.prices ul li span.cash { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; vertical-align: middle; height: 14px; background: url("../img/cash.png") repeat 0 0; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
 body aside section.prices ul li span.cash { *display: inline; }
 body aside section.prices ul li span.cash.yellow { width: 30px; }
 body aside section.prices ul li span.cash.orange { width: 45px; }
