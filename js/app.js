@@ -137,7 +137,7 @@
         this._hideTooltip();
       },
       _featureClick: function(ev,latlng,pos,data) {
-        window.open(data.link,'_blank');
+        window.open(data.link,'_blank','toolbar=1,location=1,directories=1,status=1,menubar=1,scrollbars=1,resizable=1'); 
       },
       _showTooltip: function(data) {
 
