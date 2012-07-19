@@ -53,11 +53,11 @@
       _initMap: function() {
         var map = this.map = new L.Map(this.options.map_id).setView(new L.LatLng(this.options.lat, this.options.lng), this.options.zoom)
           , mapboxUrl = 'http://{s}.tiles.mapbox.com/v3/cartodb.map-u6vat89l/{z}/{x}/{y}.png'
-          , mapboxLayer = new L.TileLayer(mapboxUrl, { maxZoom: 20, attribution: 'Map tiles by OSM and Mapbox' });
+          , mapboxLayer = new L.TileLayer(mapboxUrl, { maxZoom: 20, attribution: '' });
 
         map.addLayer(mapboxLayer);
 
-        this.$el.find("div.leaflet-control-attribution").html("Map tiles by <a href='' target='_blank'>OSM</a> and <a href='http://mapbox.com/about/maps/' target='_blank'>Mapbox</a>");
+        this.$el.find("div.leaflet-control-attribution").html("Map tiles by <a href='www.openstreetmap.org/' target='_blank'>OSM</a> and <a href='http://mapbox.com/about/maps/' target='_blank'>Mapbox</a>");
       },
 
 
@@ -75,7 +75,7 @@
           auto_bound: false
         });
 
-        this.hoverCircle = {};
+        this.hoverCircle = new L.CircleMarker(new L.LatLng(-180,-180),{weight:4, fillColor: "red", fillOpacity: 1, clickable: false, opacity: 1, stroke: false});
 
         this.map.addLayer(layer)
       },
@@ -143,6 +143,24 @@
         var latlng = new L.LatLng(data.lat,data.lng)
           , position = this.map.layerPointToContainerPoint(this.map.latLngToLayerPoint(latlng));
 
+
+        // Fake hover
+        this.hoverCircle.setLatLng(latlng);
+
+        switch (data.price) {
+          case "$$": color="#FAEC1F"; break;
+          case "$$$": color="#EAA226"; break;
+          case "$$$$": color="#DB592E"; break;
+          case "$$$$$": color="#CB0F35"; break;
+          default: color = "white";
+        }
+
+        this.hoverCircle.setStyle({fillColor: color, weight: 5});
+        this.hoverCircle.setRadius(6);
+        this.map.addLayer(this.hoverCircle);
+
+        debugger;
+
         this.$tooltip
           .html(_.template(this.options.tooltip_template,data));
 
@@ -156,6 +174,7 @@
         .show();
       },
       _hideTooltip: function() {
+        this.map.removeLayer(this.hoverCircle);
         this.$tooltip.hide();
       },
 
@@ -166,36 +185,6 @@
 
         var $cuisine = $(ev.target)
           , cuisine = $cuisine.text();
-
-        // // Check if selected
-        // if (_.include(this.filters,cuisine) && cuisine != "All types") {
-        //   this.filters = _.reject(this.filters, function(type){ return type == cuisine });
-        //   $cuisine.removeClass("selected");
-
-        //   // Check if filters length is 0, all types in that case
-        //   if (_.size(this.filters) == 0)
-        //     this.$filters.find("a.type:contains('All types')").addClass("selected");
-        // } else {
-        //   var self = this;
-
-        //   // Check if it is all types
-        //   if (cuisine == "All types") {
-
-        //     if (_.size(this.filters) == 0) return true;
-
-        //     self.$filters.find("a.type:contains('All types')").addClass("selected");
-
-        //     _.each(this.filters, function(type) {
-        //       self.$filters.find("a.type:contains(" + type + ")").removeClass("selected");
-        //     })
-
-        //     this.filters = [];
-        //   } else {
-        //     $cuisine.addClass("selected");
-        //     self.$filters.find("a.type:contains('All types')").removeClass("selected");
-        //     this.filters.push(cuisine);
-        //   }
-        // }
 
         // Check if selected
         if (_.include(this.filters,cuisine)) {
