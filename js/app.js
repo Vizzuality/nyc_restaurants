@@ -13,6 +13,7 @@
       el: $("body"),
 
       options: {
+        cdn_url: "http://d2c5ry9dy1ewvi.cloudfront.net",
         user_name: "viz2",
         table_name: "restaurant_week",
         map_id: "map",
@@ -52,15 +53,18 @@
       _initMap: function() {
         var map = this.map = new L.Map(this.options.map_id).setView(new L.LatLng(this.options.lat, this.options.lng), this.options.zoom)
           , mapboxUrl = 'http://{s}.tiles.mapbox.com/v3/cartodb.map-u6vat89l/{z}/{x}/{y}.png'
-          , mapboxLayer = new L.TileLayer(mapboxUrl, { maxZoom: 20, attribution: 'Tiles: &copy; Mapbox' });
+          , mapboxLayer = new L.TileLayer(mapboxUrl, { maxZoom: 20, attribution: 'Map tiles by OSM and Mapbox' });
 
         map.addLayer(mapboxLayer);
+
+        this.$el.find("div.leaflet-control-attribution").html("Map tiles by <a href='' target='_blank'>OSM</a> and <a href='http://mapbox.com/about/maps/' target='_blank'>Mapbox</a>");
       },
 
 
       _initLayer: function() {
         var layer = this.layer = new L.CartoDBLayer({
           map: this.map,
+          cdn_url: this.options.cdn_url,
           user_name: this.options.user_name,
           table_name: this.options.table_name,
           query: this.options.restaurants_query,
