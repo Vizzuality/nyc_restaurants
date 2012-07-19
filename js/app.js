@@ -15,6 +15,7 @@
       options: {
         cdn_url: "http://d2c5ry9dy1ewvi.cloudfront.net",
         user_name: "viz2",
+        extra_params:{v:5},
         table_name: "restaurant_week",
         map_id: "map",
         cuisine_query: "SELECT DISTINCT cuisine FROM restaurant_week",
