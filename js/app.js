@@ -23,7 +23,7 @@
         lat: 40.723713744687274,
         lng: -73.97566795349121,
         zoom: 14,
-        tooltip_template: "<h3><%= cuisine %></h3><h2><%= name %></h2><p><%= meal %></p><span class='cash' style='width:<%= price.length * 15 %>px'></span>"
+        tooltip_template: "<h3><%= cuisine %></h3><h2><%= name %></h2><p><%= meal %></p><span class='cash' style='width:<%= price.length * 15 %>px'></span><span class='arrow'></span>"
       },
 
       events: {
@@ -81,7 +81,7 @@
         $.ajax({
           type: "GET",
           url: "http://" + this.options.user_name + ".cartodb.com/api/v2/sql?q=" + this.options.cuisine_query,
-          dataType: "json",
+          dataType: "jsonp",
           success: function(r) {
             var cuisines = self.cuisines = _.map(r.rows, function(type){ return type.cuisine.replace(/\n/g, "").replace(/\r/g, "").replace(/\t/g, "") });
 
@@ -130,7 +130,7 @@
         this._hideTooltip();
       },
       _featureClick: function(ev,latlng,pos,data) {
-        window.open(data.link,'_newtab');
+        window.open(data.link,'_blank');
       },
       _showTooltip: function(data) {
 
@@ -145,7 +145,7 @@
 
         this.$tooltip.css({
           top: (position.y - h - 20) + "px",
-          left: (position.x - (w/2) - 4) + "px"
+          left: (position.x - (w/2) - 5) + "px"
         })
         .show();
       },

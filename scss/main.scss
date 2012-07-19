@@ -66,12 +66,11 @@
         background:url('../img/cash.png') repeat 0 0;
       }
 
-      &:before {
+      span.arrow { // for IE 7, if not, :before or :after
         position:absolute;
         bottom:-10px;
         left:50%;
         margin:0 0 0 -5px;
-        content:' ';
         width:0;
         height:0;
         border-left:10px solid transparent;
@@ -140,29 +139,28 @@
       section.types {
         position:absolute;
         top:248px;
-        bottom:140px;
+        bottom:125px;
         left:0;
         width:160px;
-        padding:20px;
+        padding:5px 20px 20px;
         overflow-x:visible;
         overflow-y:auto;
         outline:none;
 
         ul {
           display:block;
-          padding:5px 0 0 0;
+          padding:0;
 
           li {
             display:block;
-            margin:5px 0 0 0;
+            margin:15px 0 0 0;
 
             a {
               display:block;
-              padding:0 0 0 10px;
-              background:url("../img/list.jpg") no-repeat 0 7px;
-              font:normal 14px $fonts;
+              font:bold 11px $fonts;
               color:#666666;
               text-decoration:none;
+              text-transform:uppercase;
 
               &:hover {
                 color:#333333;
@@ -190,8 +188,8 @@
         bottom:0;
         left:0;
         width:160px;
-        height:100px;
-        padding:20px;
+        height:90px;
+        padding:15px 20px 20px;
         border-top:1px solid #CCCCCC;
 
         ul {
@@ -213,7 +211,7 @@
               &.orange-dark {background:#DB592E}
               &.red {background:#CB0F35}
             }
-            
+
             span.cash {
               @include inline-block();
               vertical-align:middle;
@@ -229,5 +227,12 @@
           }
         }
       }
+    }
+  }
+
+
+  .lt-ie9 {
+    div#tooltip span.arrow {
+        bottom:-9px;
     }
   }
