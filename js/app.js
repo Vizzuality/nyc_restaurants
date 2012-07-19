@@ -19,7 +19,7 @@
         table_name: "restaurant_week",
         map_id: "map",
         cuisine_query: "SELECT DISTINCT cuisine FROM restaurant_week",
-        restaurants_query: "SELECT *, ST_X(the_geom) as lng, ST_Y(the_geom) as lat FROM {{table_name}}",
+        restaurants_query: "SELECT *,ST_X(the_geom) as lng, ST_Y(the_geom) as lat FROM {{table_name}}",
         interactivity: "cartodb_id,name,meal,cuisine,price,link,lat,lng",
         tile_style: "",
         lat: 40.723713744687274,
