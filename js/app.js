@@ -5,10 +5,6 @@
     /*
       - Docs better
       - Comment code
-      - Footer logos and leaflet + mapbox thingy
-      - map interactions
-      - scrollpane
-      - loading animation
     */
 
 
@@ -21,11 +17,13 @@
         table_name: "restaurant_week",
         map_id: "map",
         cuisine_query: "SELECT DISTINCT cuisine FROM restaurant_week",
-        restaurants_query: "SELECT cartodb_id,the_geom,the_geom_webmercator,name,meal,cuisine,price,link,ST_ASGEOJSON(the_geom_webmercator) as position FROM {{table_name}}",
-        interactivity: "cartodb_id,name,meal,cuisine,price,link,position",
+        restaurants_query: "SELECT *, ST_X(the_geom) as lng, ST_Y(the_geom) as lat FROM {{table_name}}",
+        interactivity: "cartodb_id,name,meal,cuisine,price,link,lat,lng",
+        tile_style: "",
         lat: 40.723713744687274,
         lng: -73.97566795349121,
-        zoom: 14
+        zoom: 14,
+        tooltip_template: "<h3><%= cuisine %></h3><h2><%= name %></h2><p><%= meal %></p><span class='cash' style='width:<%= price.length * 15 %>px'></span>"
       },
 
       events: {
@@ -35,7 +33,7 @@
 
       initialize: function() {
 
-        _.bindAll(this,"_featureOver");
+        _.bindAll(this,"_featureOver", "_featureOut", "_showTooltip");
 
         this.$filters = this.$el.find("#filters");
         this.$tooltip = this.$el.find("#tooltip");
@@ -92,6 +90,13 @@
             _.each(cuisines, function(type,i) {
               self.$filters.append("<li><a class='type' href='#" + type + "'>" + type + "</a></li>")
             });
+
+            // Scrollpane... oh no!
+            self.$filters.parent().jScrollPane({
+              showArrows: true,
+              verticalArrowPositions: 'split',
+              autoReinitialise: true
+            });
           }
         })
       },
@@ -117,20 +122,35 @@
       _featureOver: function(ev,latlng,pos,data) {
         document.body.style.cursor = "pointer";
 
-        var position = JSON.parse(data.position)
-          , latlng = new L.LatLng(position.coordinates[1],position.coordinates[0])
-          , offset = this.map.latLngToLayerPoint(latlng);
-
-        this.$tooltip.css({
-          top:offset.y + "px",
-          left: offset.x + "px"
-        })
+        this._showTooltip(data);
       },
       _featureOut: function() {
         document.body.style.cursor = "default";
+
+        this._hideTooltip();
       },
       _featureClick: function(ev,latlng,pos,data) {
         window.open(data.link,'_newtab');
+      },
+      _showTooltip: function(data) {
+
+        var latlng = new L.LatLng(data.lat,data.lng)
+          , position = this.map.layerPointToContainerPoint(this.map.latLngToLayerPoint(latlng));
+
+        this.$tooltip
+          .html(_.template(this.options.tooltip_template,data));
+
+        var h = this.$tooltip.outerHeight()
+          , w = this.$tooltip.outerWidth();
+
+        this.$tooltip.css({
+          top: (position.y - h - 20) + "px",
+          left: (position.x - (w/2) - 4) + "px"
+        })
+        .show();
+      },
+      _hideTooltip: function() {
+        this.$tooltip.hide();
       },
 
 

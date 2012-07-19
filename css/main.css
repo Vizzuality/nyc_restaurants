@@ -15,25 +15,63 @@ a img { border: none; }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary { display: block; }
 
+/* CSS Styles that are needed by jScrollPane for it to operate correctly.  Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane may not operate correctly without them. */
+.jspContainer { overflow: hidden; position: relative; }
+
+.jspPane { position: absolute; }
+
+.jspVerticalBar { position: absolute; right: 5px; width: 3px; height: 100%; background: transparent; }
+
+.jspHorizontalBar { position: absolute; bottom: 0; left: 0; width: 100%; height: 16px; background: transparent; }
+
+.jspVerticalBar *, .jspHorizontalBar * { margin: 0; padding: 0; }
+
+.jspCap { display: none; }
+
+.jspHorizontalBar .jspCap { float: left; }
+
+.jspTrack { background: #DDDDDD; position: relative; }
+
+.jspDrag { background: #999; position: relative; top: 0; left: 0; cursor: pointer; }
+
+.jspHorizontalBar .jspTrack, .jspHorizontalBar .jspDrag { float: left; height: 100%; }
+
+.jspArrow { display: none; background: transparent; text-indent: -20000px; display: block; cursor: pointer; }
+
+.jspArrow.jspDisabled { cursor: default; background: transparent; }
+
+.jspVerticalBar .jspArrow { height: 5px; }
+
+.jspHorizontalBar .jspArrow { width: 16px; float: left; height: 100%; }
+
+.jspVerticalBar .jspArrow:focus { outline: none; }
+
+.jspCorner { background: #eeeef4; float: left; height: 100%; }
+
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner { margin: 0 -3px 0 0; }
+
 html, body { width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden; background: #242424; }
 
 body { font-family: "Helvetica Neue", "Helvetica", Arial; }
 body div#map { width: 100%; height: 100%; }
-body div.tooltip { position: absolute; left: 0; top: 0; padding: 20px; width: 151px; -moz-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; -webkit-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; -o-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; background: white; z-index: 10; }
-body div.tooltip h3 { display: block; font: bold 11px "Helvetica Neue"; color: #FF3366; text-transform: uppercase; }
-body div.tooltip h2 { display: block; padding: 4px 0 14px 0; font: bold 21px "Helvetica Neue"; line-height: 23px; color: #333333; border-bottom: 2px solid #FF3366; }
-body div.tooltip p { display: block; margin: 18px 0 0 0; font: normal 14px "Helvetica Neue"; color: #666666; }
-body div.tooltip span.cash { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; vertical-align: middle; height: 14px; width: 14px; margin: 6px 0 0 0; background: url("../img/cash.png") repeat 0 0; }
-body div.tooltip span.cash { *display: inline; }
-body div.tooltip:before { position: absolute; bottom: -10px; left: 50%; margin: 0 0 0 -5px; content: ' '; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid white; }
-body aside { position: fixed; top: 0; bottom: 0; right: 43px; width: 200px; height: 100%; background: #FFFFFF; -moz-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; -webkit-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; -o-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; z-index: 1; }
-body aside header { position: absolute; top: 0; left: 0; width: 100%; height: 285px; background: url("../img/stripes.png") repeat 0 0 #ff3366; border-bottom: 1px solid #CCCCCC; }
-body aside header h1 { position: absolute; top: 16px; left: -14px; width: 229px; height: 251px; background: url("../img/logo.png"); text-indent: -9999px; line-height: 0; text-transform: uppercase; font-size: 0; }
-body aside h3 { display: block; font: bold 11px "Helvetica Neue"; color: #FF3366; text-transform: uppercase; }
-body aside section.types { position: absolute; top: 285px; bottom: 140px; left: 0; width: 160px; padding: 20px; overflow-x: visible; overflow-y: auto; }
+body div#tooltip { position: absolute; display: none; left: 0; top: 0; padding: 20px; width: 151px; -moz-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; -webkit-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; -o-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; background: white; z-index: 10; }
+body div#tooltip h3 { display: block; font: bold 11px "Helvetica Neue", "Helvetica", Arial; color: #FF3366; text-transform: uppercase; }
+body div#tooltip h2 { display: block; width: 100%; padding: 4px 0 14px 0; font: bold 21px "Helvetica Neue", "Helvetica", Arial; line-height: 23px; color: #333333; border-bottom: 2px solid #FF3366; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; }
+body div#tooltip p { display: block; margin: 18px 0 0 0; font: normal 14px "Helvetica Neue", "Helvetica", Arial; color: #666666; }
+body div#tooltip span.cash { display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; vertical-align: middle; *vertical-align: auto; vertical-align: middle; height: 14px; width: 14px; margin: 6px 0 0 0; background: url("../img/cash.png") repeat 0 0; }
+body div#tooltip span.cash { *display: inline; }
+body div#tooltip:before { position: absolute; bottom: -10px; left: 50%; margin: 0 0 0 -5px; content: ' '; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid white; }
+body aside { position: fixed; top: 0; bottom: 0; right: 43px; width: 200px; height: 100%; background: #FFFFFF; -moz-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; -webkit-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; -o-box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; box-shadow: rgba(222, 222, 222, 0.2) 0 0 0 5px; z-index: 100; }
+body aside header { position: absolute; top: 0; left: 0; width: 100%; height: 248px; background: url("../img/stripes.png") repeat 0 0 #ff3366; border-bottom: 1px solid #CCCCCC; }
+body aside header h1 { position: absolute; top: 20px; left: 20px; width: 157px; height: 173px; background: url("../img/logo.png"); text-indent: -9999px; line-height: 0; text-transform: uppercase; font-size: 0; }
+body aside header a.learn_more { position: absolute; bottom: 22px; left: 0; width: 100%; display: block; margin: 0; text-align: center; font: normal 13px "Helvetica Neue", "Helvetica", Arial; color: #941D3B; text-decoration: none; }
+body aside header a.learn_more:hover { text-decoration: underline; }
+body aside h3 { display: block; font: bold 11px "Helvetica Neue", "Helvetica", Arial; color: #FF3366; text-transform: uppercase; }
+body aside section.types { position: absolute; top: 248px; bottom: 140px; left: 0; width: 160px; padding: 20px; overflow-x: visible; overflow-y: auto; outline: none; }
 body aside section.types ul { display: block; padding: 5px 0 0 0; }
 body aside section.types ul li { display: block; margin: 5px 0 0 0; }
-body aside section.types ul li a { display: block; padding: 0 0 0 10px; background: url("../img/list.jpg") no-repeat 0 7px; font: normal 14px "Helvetica Neue","Helvetica"; color: #666666; text-decoration: none; }
+body aside section.types ul li a { display: block; padding: 0 0 0 10px; background: url("../img/list.jpg") no-repeat 0 7px; font: normal 14px "Helvetica Neue", "Helvetica", Arial; color: #666666; text-decoration: none; }
 body aside section.types ul li a:hover { color: #333333; text-decoration: underline; cursor: pointer; }
 body aside section.types ul li a.selected { color: #FF3366; text-decoration: none; background-position: 0 -43px; }
 body aside section.types ul li a.selected:hover { color: #FF3366; text-decoration: underline; }

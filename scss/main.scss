@@ -1,5 +1,8 @@
   @import "compass";
   @import "compass/reset";
+  @import "jscrollpane";
+
+  $fonts: "Helvetica Neue", "Helvetica", Arial;
 
   html, body {
     width:100%;
@@ -11,11 +14,12 @@
   }
 
   body {
-    font-family: "Helvetica Neue", "Helvetica", Arial;
+    font-family: $fonts;
     div#map {width:100%; height:100%;}
 
-    div.tooltip {
+    div#tooltip {
       position:absolute;
+      display:none;
       left:0;
       top:0;
       padding:20px;
@@ -26,24 +30,30 @@
 
       h3 {
         display:block;
-        font:bold 11px "Helvetica Neue";
+        font:bold 11px $fonts;
         color:#FF3366;
         text-transform:uppercase;
       }
 
       h2 {
         display:block;
+        width:100%;
         padding:4px 0 14px 0;
-        font:bold 21px "Helvetica Neue";
+        font:bold 21px $fonts;
         line-height:23px;
         color:#333333;
         border-bottom:2px solid #FF3366;
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap; 
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        word-wrap: break-word;
       }
 
       p {
         display:block;
         margin:18px 0 0 0;
-        font:normal 14px "Helvetica Neue";
+        font:normal 14px $fonts;
         color:#666666;
       }
 
@@ -79,47 +89,64 @@
       height:100%;
       background:#FFFFFF;
       @include box-shadow(rgba(#DEDEDE,0.2) 0 0 0 5px);
-      z-index:1;
+      z-index:100;
 
       header {
         position:absolute;
         top:0;
         left:0;
         width:100%;
-        height:285px;
+        height:248px;
         background:url("../img/stripes.png") repeat 0 0 #FF3366;
         border-bottom:1px solid #CCCCCC;
 
         h1 {
           position:absolute;
-          top:16px;
-          left:-14px;
-          width:229px;
-          height:251px;
+          top:20px;
+          left:20px;
+          width:157px;
+          height:173px;
           background:url("../img/logo.png");
           text-indent:-9999px;
           line-height:0;
           text-transform:uppercase;
           font-size:0;
         }
+
+        a.learn_more {
+          position:absolute;
+          bottom:22px;
+          left:0;
+          width:100%;
+          display:block;
+          margin:0;
+          text-align:center;
+          font:normal 13px $fonts;
+          color:#941D3B;
+          text-decoration:none;
+          &:hover {
+            text-decoration:underline;
+          }
+        }
       }
 
       h3 {
         display:block;
-        font:bold 11px "Helvetica Neue";
+        font:bold 11px $fonts;
         color:#FF3366;
         text-transform:uppercase;
       }
 
       section.types {
         position:absolute;
-        top:285px;
+        top:248px;
         bottom:140px;
         left:0;
         width:160px;
         padding:20px;
         overflow-x:visible;
         overflow-y:auto;
+        outline:none;
 
         ul {
           display:block;
@@ -133,7 +160,7 @@
               display:block;
               padding:0 0 0 10px;
               background:url("../img/list.jpg") no-repeat 0 7px;
-              font:normal 14px "Helvetica Neue","Helvetica";
+              font:normal 14px $fonts;
               color:#666666;
               text-decoration:none;
 
@@ -186,6 +213,7 @@
               &.orange-dark {background:#DB592E}
               &.red {background:#CB0F35}
             }
+            
             span.cash {
               @include inline-block();
               vertical-align:middle;
