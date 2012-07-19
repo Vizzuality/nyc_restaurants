@@ -161,14 +161,39 @@
         var $cuisine = $(ev.target)
           , cuisine = $cuisine.text();
 
-        // Check if selected
-        if (_.include(this.filters,cuisine) && cuisine != "All types") {
-          this.filters = _.reject(this.filters, function(type){ return type == cuisine });
-          $cuisine.removeClass("selected");
+        // // Check if selected
+        // if (_.include(this.filters,cuisine) && cuisine != "All types") {
+        //   this.filters = _.reject(this.filters, function(type){ return type == cuisine });
+        //   $cuisine.removeClass("selected");
 
-          // Check if filters length is 0, all types in that case
-          if (_.size(this.filters) == 0)
-            this.$filters.find("a.type:contains('All types')").addClass("selected");
+        //   // Check if filters length is 0, all types in that case
+        //   if (_.size(this.filters) == 0)
+        //     this.$filters.find("a.type:contains('All types')").addClass("selected");
+        // } else {
+        //   var self = this;
+
+        //   // Check if it is all types
+        //   if (cuisine == "All types") {
+
+        //     if (_.size(this.filters) == 0) return true;
+
+        //     self.$filters.find("a.type:contains('All types')").addClass("selected");
+
+        //     _.each(this.filters, function(type) {
+        //       self.$filters.find("a.type:contains(" + type + ")").removeClass("selected");
+        //     })
+
+        //     this.filters = [];
+        //   } else {
+        //     $cuisine.addClass("selected");
+        //     self.$filters.find("a.type:contains('All types')").removeClass("selected");
+        //     this.filters.push(cuisine);
+        //   }
+        // }
+
+        // Check if selected
+        if (_.include(this.filters,cuisine)) {
+          return false;
         } else {
           var self = this;
 
@@ -186,10 +211,19 @@
             this.filters = [];
           } else {
             $cuisine.addClass("selected");
+            
             self.$filters.find("a.type:contains('All types')").removeClass("selected");
+
+            _.each(this.filters, function(type) {
+              self.$filters.find("a.type:contains(" + type + ")").removeClass("selected");
+            })
+
+            this.filters = [];
+
             this.filters.push(cuisine);
           }
         }
+
         // Change filter
         this._updateLayer();
       }

@@ -74,7 +74,7 @@ body aside section.types ul li { display: block; margin: 15px 0 0 0; }
 body aside section.types ul li a { display: block; font: bold 11px "Helvetica Neue", "Helvetica", Arial; color: #666666; text-decoration: none; text-transform: uppercase; }
 body aside section.types ul li a:hover { color: #333333; text-decoration: underline; cursor: pointer; }
 body aside section.types ul li a.selected { color: #FF3366; text-decoration: none; background-position: 0 -43px; }
-body aside section.types ul li a.selected:hover { color: #FF3366; text-decoration: underline; }
+body aside section.types ul li a.selected:hover { color: #FF3366; text-decoration: none; }
 body aside section.prices { position: absolute; bottom: 0; left: 0; width: 160px; height: 90px; padding: 15px 20px 20px; border-top: 1px solid #CCCCCC; }
 body aside section.prices ul { display: block; }
 body aside section.prices ul li { display: block; margin: 5px 0 0 0; }
