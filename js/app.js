@@ -160,8 +160,6 @@
         this.hoverCircle.setRadius(6);
         this.map.addLayer(this.hoverCircle);
 
-        debugger;
-
         this.$tooltip
           .html(_.template(this.options.tooltip_template,data));
 
