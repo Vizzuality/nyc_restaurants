@@ -14,6 +14,62 @@
     font-family: "Helvetica Neue", "Helvetica", Arial;
     div#map {width:100%; height:100%;}
 
+    div.tooltip {
+      position:absolute;
+      left:0;
+      top:0;
+      padding:20px;
+      width:151px;
+      @include box-shadow(rgba(#DEDEDE,0.2) 0 0 0 5px);
+      background:white;
+      z-index:10;
+
+      h3 {
+        display:block;
+        font:bold 11px "Helvetica Neue";
+        color:#FF3366;
+        text-transform:uppercase;
+      }
+
+      h2 {
+        display:block;
+        padding:4px 0 14px 0;
+        font:bold 21px "Helvetica Neue";
+        line-height:23px;
+        color:#333333;
+        border-bottom:2px solid #FF3366;
+      }
+
+      p {
+        display:block;
+        margin:18px 0 0 0;
+        font:normal 14px "Helvetica Neue";
+        color:#666666;
+      }
+
+      span.cash {
+        @include inline-block();
+        vertical-align:middle;
+        height:14px;
+        width:14px;
+        margin:6px 0 0 0;
+        background:url('../img/cash.png') repeat 0 0;
+      }
+
+      &:before {
+        position:absolute;
+        bottom:-10px;
+        left:50%;
+        margin:0 0 0 -5px;
+        content:' ';
+        width:0;
+        height:0;
+        border-left:10px solid transparent;
+        border-right:10px solid transparent;
+        border-top:10px solid white;
+      }
+    }
+
     aside {
       position:fixed;
       top:0;
@@ -62,6 +118,44 @@
         left:0;
         width:160px;
         padding:20px;
+        overflow-x:visible;
+        overflow-y:auto;
+
+        ul {
+          display:block;
+          padding:5px 0 0 0;
+
+          li {
+            display:block;
+            margin:5px 0 0 0;
+
+            a {
+              display:block;
+              padding:0 0 0 10px;
+              background:url("../img/list.jpg") no-repeat 0 7px;
+              font:normal 14px "Helvetica Neue","Helvetica";
+              color:#666666;
+              text-decoration:none;
+
+              &:hover {
+                color:#333333;
+                text-decoration:underline;
+                cursor:pointer;
+              }
+
+              &.selected {
+                color:#FF3366;
+                text-decoration:none;
+                background-position:0 -43px;
+
+                &:hover {
+                  color:#FF3366;
+                  text-decoration:underline;
+                }
+              }
+            }
+          }
+        }
       }
 
       section.prices {
