@@ -76,7 +76,7 @@
           auto_bound: false
         });
 
-        this.hoverCircle = new L.CircleMarker(new L.LatLng(-180,-180),{weight:4, fillColor: "red", fillOpacity: 1, clickable: false, opacity: 1, stroke: false});
+        this.hoverCircle = new L.CircleMarker(new L.LatLng(-180,-180), {weight:2, fillColor: "red", fillOpacity: 1, clickable: false, opacity: 1, stroke: true, color:"#333333"});
 
         this.map.addLayer(layer)
       },
@@ -156,8 +156,8 @@
           default: color = "white";
         }
 
-        this.hoverCircle.setStyle({fillColor: color, weight: 5});
-        this.hoverCircle.setRadius(6);
+        this.hoverCircle.setStyle({fillColor: color});
+        this.hoverCircle.setRadius(6.4);
         this.map.addLayer(this.hoverCircle);
 
         this.$tooltip
