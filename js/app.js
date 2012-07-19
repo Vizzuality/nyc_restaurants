@@ -23,7 +23,7 @@
         lat: 40.723713744687274,
         lng: -73.97566795349121,
         zoom: 14,
-        tooltip_template: "<h3><%= cuisine %></h3><h2><%= name %></h2><p><%= meal %></p><span class='cash' style='width:<%= price.length * 15 %>px'></span><span class='arrow'></span>"
+        tooltip_template: "<h3><%= cuisine %></h3><h2><%= name %></h2><p><%= meal %></p><span class='cash' style='width:<%= price.length * 9 %>px'></span><span class='arrow'></span>"
       },
 
       events: {
@@ -70,6 +70,8 @@
           featureClick: this._featureClick,
           auto_bound: false
         });
+
+        this.hoverCircle = {};
 
         this.map.addLayer(layer)
       },

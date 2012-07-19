@@ -61,7 +61,7 @@
         @include inline-block();
         vertical-align:middle;
         height:14px;
-        width:14px;
+        width:9px;
         margin:6px 0 0 0;
         background:url('../img/cash.png') repeat 0 0;
       }
@@ -141,8 +141,8 @@
         top:248px;
         bottom:125px;
         left:0;
-        width:160px;
-        padding:5px 20px 20px;
+        width:200px;
+        padding:5px 0 20px;
         overflow-x:visible;
         overflow-y:auto;
         outline:none;
@@ -152,11 +152,11 @@
           padding:0;
 
           li {
-            display:block;
             margin:15px 0 0 0;
 
             a {
               display:block;
+              padding:0 20px;
               font:bold 11px $fonts;
               color:#666666;
               text-decoration:none;
@@ -171,7 +171,8 @@
               &.selected {
                 color:#FF3366;
                 text-decoration:none;
-                background-position:0 -43px;
+                background:url('../img/list.png') no-repeat 9px 6px;
+                list-style:square;
 
                 &:hover {
                   color:#FF3366;
@@ -215,14 +216,14 @@
             span.cash {
               @include inline-block();
               vertical-align:middle;
-              height:14px;
+              height:13px;
               background:url('../img/cash.png') repeat 0 0;
               
               @include border-radius(5px);
-              &.yellow {width:30px}
-              &.orange {width:45px}
-              &.orange-dark {width:60px}
-              &.red {width:75px}
+              &.yellow {width:18px}
+              &.orange {width:27px}
+              &.orange-dark {width:36px}
+              &.red {width:45px}
             }
           }
         }
