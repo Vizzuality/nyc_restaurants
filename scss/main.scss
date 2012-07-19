@@ -139,7 +139,7 @@
       section.types {
         position:absolute;
         top:248px;
-        bottom:125px;
+        bottom:185px;
         left:0;
         width:200px;
         padding:5px 0 20px;
@@ -186,7 +186,7 @@
 
       section.prices {
         position:absolute;
-        bottom:0;
+        bottom:60px;
         left:0;
         width:160px;
         height:90px;
@@ -226,6 +226,29 @@
               &.red {width:45px}
             }
           }
+        }
+      }
+
+      section.social {
+        position:absolute;
+        bottom:0;
+        left:0;
+        height:20px;
+        padding:20px;
+        width:160px;
+        overflow:hidden;
+        border-top:1px solid #CCCCCC;
+
+        div.twitter {
+          @include inline-block();
+          width:auto;
+          margin:0 10px 0 18px;
+        }
+
+        div.fb-like {
+          @include inline-block();
+          width:55px;
+          overflow:hidden;
         }
       }
     }
