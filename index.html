@@ -18,11 +18,22 @@
     <script type="text/javascript" src="js/vendor/modernizr.min.js"></script>
 </head>
 <body>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=218351218204660";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+
   <div id="map"></div>
   <aside>
     <header>
       <h1><a href="http://www.nycgo.com/restaurantweek/" target="_blank">NYC Restaurants 20 Anniversary</a></h1>
-      <a href="#todo" class="learn_more" taget="_blank">Learn more</a>
+      <a href="http://blog.cartodb.com/post/27556284760/save-time-and-eat-better-with-the-ny-restaurant-week" class="learn_more" taget="_blank">Learn more</a>
     </header>
     <section class="types">
       <ul id="filters"></ul>
@@ -46,6 +57,13 @@
           <span class="cash red"></span>
         </li>
       </ul>
+    </section>
+    <section class="social">
+      <div class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://vizzuality.github.com/nyc_restaurants/" data-via="cartodb" data-related="cartodb" data-count="none">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      </div>
+      <div class="fb-like" data-href="http://vizzuality.github.com/nyc_restaurants/" data-send="false" data-width="70" data-show-faces="false"></div>
     </section>
   </aside>
   <div id="tooltip"></div>
